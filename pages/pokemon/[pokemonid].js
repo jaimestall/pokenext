@@ -18,7 +18,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   }
 }
 
@@ -26,6 +26,27 @@ export const getStaticProps = async (context) => {
   const id = context.params.pokemonId
 
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+
+  if (id == 0) return {
+    props: {
+      pokemon: {
+        name: "teste",
+        id: 0,
+        types: [{ "slot": 1, "type": { "name": "teste" } }],
+        stats: [
+          {
+            "base_stat": 0,
+            "effort": 0,
+            "stat": {
+              "name": "teste"
+            }
+          },
+        ],
+        weight: 0,
+        height: 0
+      }
+    }
+  }
 
   const data = await res.json()
 
@@ -35,10 +56,7 @@ export const getStaticProps = async (context) => {
 }
 
 export default function Pokemon({ pokemon }) {
-  console.log(pokemon.stats)
-  pokemon.stats.forEach(item => {
-    console.log(item.stat.name)
-  })
+  console.log(pokemon)
   return (
     <div className={styles.pokemon_container}>
       <h1 className={styles.title}>{pokemon.name}</h1>
@@ -65,7 +83,7 @@ export default function Pokemon({ pokemon }) {
           ))}
         </div>
       </div>
-      
+
       <h3>Status:</h3>
       <div className={styles.stats_table}>
         <div className={styles.stats_container}>

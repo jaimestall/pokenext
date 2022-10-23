@@ -6,8 +6,11 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
-        <Image src="/images/pokeball.png" width="30" height="30" alt="Logo" />
-        <h1>Pokenext</h1>
+        <Link href="/">
+          <a>
+            <Image src="/images/pokeball.png" width="30" height="30" alt="Logo" />
+          </a>
+        </Link>
       </div>
       <ul className={styles.link_items}>
         <li>
