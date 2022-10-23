@@ -15,14 +15,12 @@ export const getStaticPaths = async () => {
       params: { pokemonId: index.toString() },
     }
   })
-  console.log(paths)
 
   return {
     paths,
     fallback: false,
   }
 }
-console.log(getStaticPaths())
 
 export const getStaticProps = async (context) => {
   const id = context.params.pokemonId
