@@ -9,7 +9,7 @@
   color: #fff;
   padding: 0.3em;
   margin: 0.8em auto;
-  width: 100%;
+  width: 25%;
 }
 
 .pokemon_container h3 {
@@ -20,6 +20,35 @@
 .types_container {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.stats_table {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+.stats_table span {
+  line-height: 22px;
+}
+
+.stats_container {
+  width: 25%;
+  margin-right: 5px;
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.stats_container_values {
+  width: 25%;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
 }
 

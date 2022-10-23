@@ -35,7 +35,10 @@ export const getStaticProps = async (context) => {
 }
 
 export default function Pokemon({ pokemon }) {
-  console.log(pokemon)
+  console.log(pokemon.stats)
+  pokemon.stats.forEach(item => {
+    console.log(item.stat.name)
+  })
   return (
     <div className={styles.pokemon_container}>
       <h1 className={styles.title}>{pokemon.name}</h1>
@@ -58,6 +61,28 @@ export default function Pokemon({ pokemon }) {
               className={`${styles.type} ${styles['type_' + item.type.name]}`}
             >
               {item.type.name}
+            </span>
+          ))}
+        </div>
+      </div>
+      
+      <h3>Status:</h3>
+      <div className={styles.stats_table}>
+        <div className={styles.stats_container}>
+          {pokemon.stats.map((item, index) => (
+            <span
+              key={index}
+            >
+              {item.stat.name}:
+            </span>
+          ))}
+        </div>
+        <div className={styles.stats_container_values}>
+          {pokemon.stats.map((item, index) => (
+            <span
+              key={index}
+            >
+              {item.base_stat}
             </span>
           ))}
         </div>
