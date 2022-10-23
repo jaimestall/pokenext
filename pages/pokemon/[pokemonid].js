@@ -67,11 +67,11 @@ export default function Pokemon({ pokemon }) {
         alt={pokemon.name}
       />
       <div>
-        <h3>Número:</h3>
+        <h3>Number:</h3>
         <p>#{pokemon.id}</p>
       </div>
       <div>
-        <h3>Tipo:</h3>
+        <h3>Types:</h3>
         <div className={styles.types_container}>
           {pokemon.types.map((item, index) => (
             <span
@@ -107,11 +107,11 @@ export default function Pokemon({ pokemon }) {
       </div>
       <div className={styles.data_container}>
         <div className={styles.data_height}>
-          <h4>Altura:</h4>
+          <h4>Height:</h4>
           <p>{pokemon.height * 10} cm</p>
         </div>
         <div className={styles.data_weight}>
-          <h4>Peso:</h4>
+          <h4>Weight:</h4>
           <p>{pokemon.weight / 10} kg</p>
         </div>
       </div>
