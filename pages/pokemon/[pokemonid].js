@@ -39,7 +39,6 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       pokemon: data,
-      fallback: false
     },
   }
 }
