@@ -54,7 +54,7 @@ export default function Pokemon({ pokemon }) {
         alt={pokemon.name}
       />
       <div>
-        <h3>Number:</h3>
+        <h3>Number</h3>
         <p>#{pokemon.id}</p>
       </div>
       <div>
