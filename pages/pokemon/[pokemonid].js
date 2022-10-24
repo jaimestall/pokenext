@@ -7,19 +7,12 @@ import { useRouter } from 'next/router'
 export const getStaticPaths = async () => {
   const maxPokemons = 251
   const api = `https://pokeapi.co/api/v2/pokemon/`
-
   const res = await fetch(`${api}/?limit=${maxPokemons}`)
-
   const data = await res.json()
-
   const paths = data.results.map((pokemon, index) => {
-    return {
-      params: {
-        pokemonId: (index).toString()
-      },
-    }
+    index = String(index)
+    return { params: { pokemonId: index }, }
   })
-
   return {
     paths,
     fallback: true,
@@ -28,24 +21,20 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   let id = context.params.pokemonId;
-  if (id == 0) {
-    id = 1
-  }
-
+  if (id == 0) id = 1
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-
   const data = await res.json()
-
   return {
     props: {
       pokemon: data,
+      fallback: false,
     },
   }
 }
 
 export default function Pokemon({ pokemon }) {
   const router = useRouter();
-  if(router.isFallback) {
+  if (router.isFallback) {
     return <div>
       Loading...
     </div>
