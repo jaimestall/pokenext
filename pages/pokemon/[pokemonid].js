@@ -11,10 +11,9 @@ export const getStaticPaths = async () => {
   const data = await res.json()
 
   const paths = data.results.map((pokemon, index) => {
-    index = index.toString();
     return {
       params: {
-        pokemonId: index
+        pokemonId: index.toString()
       },
     }
   })
