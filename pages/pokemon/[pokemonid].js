@@ -10,14 +10,11 @@ export const getStaticPaths = async () => {
 
   const data = await res.json()
 
-  data.results.map((pokemon, index) => {
-    index = index.toString()
-  })
-
   const paths = data.results.map((pokemon, index) => {
+    index = index.toString();
     return {
       params: {
-        pokemonId: index.toString()
+        pokemonId: index
       },
     }
   })
@@ -49,7 +46,6 @@ export const getStaticProps = async (context) => {
 
 export default function Pokemon({ pokemon }) {
   pokemon.id = String(pokemon.id)
-  console.log(typeof pokemon.id)
   return (
     <div className={styles.pokemon_container}>
       <h1 className={styles.title}>{pokemon.name}</h1>
